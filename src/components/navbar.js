@@ -33,23 +33,26 @@ export default function Navbar() {
 
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <Link className={`nav-link ${location.pathname === '/' && 'active'} `} to='/'>Home</Link>
+                  <Link className={`nav-link ${location.pathname === '/' ? 'active' : <></>} `} to='/'>Home</Link>
                 </li>
 
                 <li className="nav-item">
-                  <Link className={`nav-link ${location.pathname === '/courses' && 'active'} `} to="/courses">Courses</Link>
+                  <Link className={`nav-link ${location.pathname === '/courses' ? 'active'
+                    : <></>} `} to='/courses'>Courses</Link>
                 </li>
 
                 <li className="nav-item">
-                  <Link className={`nav-link ${location.pathname === '/verification' && 'active'} `} to="/verification">Online Verification</Link>
+                  <Link className={`nav-link ${location.pathname === '/verification' ? 'active' : <></>} `} to="/verification">Online Verification</Link>
                 </li>
 
                 <li className="nav-item">
-                  <Link className={`nav-link ${location.pathname === '/about' && 'active'} `} to="/about">About Us</Link>
+                  <Link className={`nav-link ${location.pathname === '/about' ? 'active'
+                    : <></>} `} to="/about">About Us</Link>
                 </li>
 
                 <li className="nav-item pe-4">
-                  <Link className={`nav-link ${location.pathname === '/contactus' && 'active'} `} to="/contactus">Contact Us</Link>
+                  <Link className={`nav-link ${location.pathname === '/contactus' ? 'active'
+                    : <></>} `} to="/contactus">Contact Us</Link>
                 </li>
 
 
@@ -60,14 +63,14 @@ export default function Navbar() {
                   <input type="button" className="ll  p-0  px-3" value="signup" />
                 </Link>
                 </li>
-                <li className="my-1 ms-3 "><a href="./user-portal/dashboard.html" className="ll">
+                <li className="my-1 ms-3 "><Link to="./userdashboard" className="ll">
                   <input type="button" className="ll  p-0  px-3" value="abc" />
-                </a>
+                </Link>
                 </li>
 
-                <li className="my-1 ms-3 "><a href="./teacher-portal/main-page.html" className="ll">
+                <li className="my-1 ms-3 "><Link to="./teachermainpage" className="ll">
                   <input type="button" className="ll  p-0  px-3" value="goto teacher panel" />
-                </a>
+                </Link>
                 </li>
 
               </ul>

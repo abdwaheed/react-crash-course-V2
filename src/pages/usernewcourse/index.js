@@ -11,7 +11,9 @@ export default function UserNewCourse() {
       <Navbar />
       <Searchbar />
 
-      <UserStructure>
+
+      <UserStructure isStudent={true} value='hello'>
+
         <h3 class="py-3 px-4">AVAILABLE COURSES</h3>
         <div class="new-th">
           <form action="">

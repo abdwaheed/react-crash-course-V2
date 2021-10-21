@@ -1,7 +1,12 @@
 import React from 'react'
 import UserButton from './userbutton'
+import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
-export default function UserStructure({ children }) {
+export default function UserStructure({ children, btnvalue, classname, isStudent }) {
+
+  const location = useLocation()
+
   return (
     <>
       <section class="user-panel bg-light">
@@ -15,11 +20,24 @@ export default function UserStructure({ children }) {
           <div class="container">
             <div class="col-md-9 offset-md-3">
               <ul>
-                <li><a href="dashboard-selected-courses.html">My Dashboard</a></li>
-                <li styles="background-color: rgb(66, 112, 143);
-            "><a href="dashboard.html">My Profile</a></li>
-                <li><a href="dashboard-completed-courses.html">Completed Courses</a></li>
-                <li><a href="dashboard-new-course.html">Select New Courses</a></li>
+                <li style={{
+                  backgroundColor: location.pathname === '/userselectedcourses' ? 'rgb(66, 112, 143)' : ''
+                }}>
+                  <Link to="./userselectedcourses">My Dashboard</Link>
+                </li>
+
+                <li style={{ backgroundColor: location.pathname === '/userdashboard' || location.pathname === '/userdashboardedit' ? 'rgb(66, 112, 143)' : '' }} >
+                  <Link to="./userdashboard">My Profile</Link>
+                </li>
+
+                <li style={{ backgroundColor: location.pathname === '/usercompletedcourses' ? 'rgb(66, 112, 143)' : '' }}>
+                  <Link to="./usercompletedcourses">Completed Courses</Link>
+                </li>
+
+                <li style={{ backgroundColor: location.pathname === '/usernewcourse' ? 'rgb(66, 112, 143)' : '' }}>
+                  <Link to="./usernewcourse">Select New Courses</Link>
+                </li>
+
               </ul>
             </div>
           </div>
@@ -52,13 +70,17 @@ export default function UserStructure({ children }) {
                     </tbody>
                   </table>
 
-                  <div class="row edit-profile">
+                  {/* <div class="row edit-profile">
                     <a href="dashboard-edit.html" class="my-4"><input type="submit" class="btn btn-success p-2"
                       value="Edit Profile" /></a>
-                  </div>
+                  </div> */}
 
-
-                  {/* <UserButton /> */}
+                  {
+                    isStudent ?
+                      <UserButton href='./userdashboardedit' classname={classname} value={btnvalue} />
+                      :
+                      <></>
+                  }
 
                 </div>
               </div>

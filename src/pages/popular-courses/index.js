@@ -4,8 +4,13 @@ import Navbar from '../../components/navbar';
 import Footer from '../../components/footer';
 import Comments from '../../components/comments';
 import { Link } from 'react-router-dom'
+import CtitleDetails from '../../components/CtitleDetails';
+import Iframe from '../../components/iframe';
 
 export default function Pcourses() {
+  var isLogin = false;
+  var isEnroll = false;
+
   return (
     <>
       <Navbar />
@@ -18,7 +23,9 @@ export default function Pcourses() {
       <section class="course-video bg-white">
         <div class="video-container my-5">
 
-          <div class="ban2  text-white">
+          <CtitleDetails />
+
+          {/* <div class="ban2  text-white">
             <div class="row">
               <div class="col-md-8 py-3">
                 <h3 class="text-white text-center">XYZ Course</h3>
@@ -59,7 +66,7 @@ export default function Pcourses() {
               </div>
             </div>
 
-          </div>
+          </div> */}
 
           <div class="ban3 border-none">
             <h2>Requirements</h2>
@@ -90,24 +97,55 @@ export default function Pcourses() {
           </div>
 
           <div class="ban2 bg-white">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/mE68wy5ZFFI" title="YouTube video player"
+            {/* <iframe width="560" height="315" src="https://www.youtube.com/embed/mE68wy5ZFFI" title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
+              allowfullscreen></iframe> */}
+
+
+            <Iframe />
           </div>
 
 
           <div class="ban2 text-center py-3">
             <div class=" course-btns-container">
               <div class="row">
-                <div class="col-md-6">
-                  <Link to="/signup"><input type="submit" value="REGISTER"
-                    class="btn py-2 text-white w-100 bg-secondary" /></Link>
-                </div>
-                <div class="col-md-6">
-                  <Link to="signin"><input type="submit" value="LOGIN"
-                    class="btn py-2 text-white w-100 bg-secondary" /></Link>
-                </div>
+
+                {isLogin && isEnroll ?
+                  <div class="col-md-12">
+                    <Link to="/signup"><input type="submit" value="GOTO COURSE"
+                      class="btn py-2 text-white w-100 bg-secondary" /></Link>
+                  </div>
+                  :
+
+                  [
+                    (!isLogin ?
+                      <>
+                        <div class="col-md-6">
+                          <Link to="/signup"><input type="submit" value="SIGNUP"
+                            class="btn py-2 text-white w-100 bg-secondary" /></Link>
+                        </div>
+                        <div class="col-md-6">
+                          <Link to="signin"><input type="submit" value="LOGIN"
+                            class="btn py-2 text-white w-100 bg-secondary" /></Link>
+                        </div>
+                      </> :
+                      [
+                        (
+                          isLogin && !isEnroll ?
+
+                            <div class="col-md-12">
+                              <Link to="/signup"><input type="submit" value="ENROLL NOW"
+                                class="btn py-2 text-white w-100 bg-secondary" /></Link>
+                            </div>
+                            : ''
+                        )
+                      ]
+                    )
+                  ]
+                }
+
+
               </div>
             </div>
           </div>

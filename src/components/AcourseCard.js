@@ -12,8 +12,8 @@ export default function AcourseCard({ img, href, heading }) {
 
         <p className="card-text">Classes started from coming friday(21 jun 2017)
         </p>
-        <a href="popular-course.html" className="btn btn-primary">View Demo</a>
-        <a href="signup.html" className="btn btn-light border-dark">Registration</a>
+        <Link to={href} className="btn btn-primary">View Demo</Link>
+        <Link to='/signup' className="btn btn-light border-dark">Registration</Link>
       </div>
     </div>
   )
